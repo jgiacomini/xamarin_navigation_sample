@@ -1,4 +1,5 @@
 ﻿using CoreGraphics;
+using Foundation;
 using System;
 
 using UIKit;
@@ -27,6 +28,34 @@ namespace Sample.iOS
             button2.TouchUpInside += Button_TouchUpInside;
 
             View.AddSubviews(button1, button2);
+
+
+            // EXEMPLE DE CODE DE Sauvegarde d'état
+            // Nom de la clef de restauration
+            RestorationIdentifier = nameof(MainViewController) + "RestorationId";
+            // Définition de la classe restaurée
+            RestorationClass = new ObjCRuntime.Class(typeof(MainViewController));
+        }
+
+        private int _nbTimeViewControllerDisplayed = 1;
+
+
+        public override void EncodeRestorableState(NSCoder coder)
+        {
+            coder.Encode(_nbTimeViewControllerDisplayed, "NbTimeViewControllerDisplayed");
+            base.EncodeRestorableState(coder);
+        }
+
+        public override void DecodeRestorableState(NSCoder coder)
+        {
+            _nbTimeViewControllerDisplayed = coder.DecodeInt("NbTimeViewControllerDisplayed");
+            base.DecodeRestorableState(coder);
+        }
+
+        public override void ApplicationFinishedRestoringState()
+        {
+            _nbTimeViewControllerDisplayed++;
+            base.ApplicationFinishedRestoringState();
         }
 
         private void Button_TouchUpInside(object sender, EventArgs e)
@@ -43,7 +72,7 @@ namespace Sample.iOS
 
             // Navigation vers le contrôleur cible
             this.NavigationController.PushViewController(targetViewController, true);
-            
+
         }
 
         public override void DidReceiveMemoryWarning()

@@ -24,6 +24,17 @@ namespace Sample.iOS
             _window.MakeKeyAndVisible();
             return true;
         }
-    }
 
+        public override bool ShouldSaveApplicationState(UIApplication application, NSCoder coder)
+        {
+            return true;
+        }
+
+
+        // Activation de la restauration de l’état
+        public override bool ShouldRestoreApplicationState(UIApplication application, NSCoder coder)
+        {
+            return true;
+        }
+    }
 }
