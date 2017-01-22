@@ -11,7 +11,7 @@ namespace Sample.iOS
         public SecondViewController()
         {
             View.BackgroundColor = UIColor.Purple;
-
+            this.EdgesForExtendedLayout = UIRectEdge.None;
         }
     }
 }

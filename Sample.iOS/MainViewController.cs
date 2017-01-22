@@ -1,7 +1,6 @@
 ﻿using CoreGraphics;
 using Foundation;
 using System;
-
 using UIKit;
 
 namespace Sample.iOS
@@ -10,7 +9,8 @@ namespace Sample.iOS
     {
         public MainViewController()
         {
-            View.BackgroundColor = UIColor.Green;
+            this.View.BackgroundColor = UIColor.Green;
+            this.EdgesForExtendedLayout = UIRectEdge.None;
         }
 
         public override void ViewDidLoad()
@@ -24,8 +24,8 @@ namespace Sample.iOS
 
             var button2 = UIButton.FromType(UIButtonType.System);
             button2.SetTitle("Navigation avec donnée", UIControlState.Normal);
-            button2.Frame = new CGRect(60, 10, View.Bounds.Width, 40);
-            button2.TouchUpInside += Button_TouchUpInside;
+            button2.Frame = new CGRect(10, 60, View.Bounds.Width, 40);
+            button2.TouchUpInside += NavigationAvecDonnee;
 
             View.AddSubviews(button1, button2);
 
@@ -37,8 +37,24 @@ namespace Sample.iOS
             RestorationClass = new ObjCRuntime.Class(typeof(MainViewController));
         }
 
-        private int _nbTimeViewControllerDisplayed = 1;
+        private void Button_TouchUpInside(object sender, EventArgs e)
+        {
+            this.NavigationController.PushViewController(new SecondViewController(), true);
+        }
 
+        private void NavigationAvecDonnee(object sender, EventArgs e)
+        {
+            // Perform any additional setup after loading the view, typically from a nib.
+            var targetViewController = new TargetViewController();
+            // Passage de donnée via la méthode Initialize
+            targetViewController.Initialize("donnée à envoyer à la cible");
+
+            // Navigation vers le contrôleur cible
+            this.NavigationController.PushViewController(targetViewController, true);
+        }
+
+        #region Sauvegarde et Restauration d'état
+        private int _nbTimeViewControllerDisplayed = 1;
 
         public override void EncodeRestorableState(NSCoder coder)
         {
@@ -57,28 +73,6 @@ namespace Sample.iOS
             _nbTimeViewControllerDisplayed++;
             base.ApplicationFinishedRestoringState();
         }
-
-        private void Button_TouchUpInside(object sender, EventArgs e)
-        {
-            this.NavigationController.PushViewController(new SecondViewController(), true);
-        }
-
-        private void Button2_TouchUpInside(object sender, EventArgs e)
-        {
-            // Perform any additional setup after loading the view, typically from a nib.
-            var targetViewController = new TargetViewController();
-            // Passage de donnée via la méthode Initialize
-            targetViewController.Initialize("donnée à envoyer à la cible");
-
-            // Navigation vers le contrôleur cible
-            this.NavigationController.PushViewController(targetViewController, true);
-
-        }
-
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
+        #endregion
     }
 }

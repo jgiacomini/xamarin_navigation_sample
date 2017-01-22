@@ -11,6 +11,11 @@ namespace Sample.iOS
     {
         private string _data;
 
+        public TargetViewController()
+        {
+            this.EdgesForExtendedLayout = UIRectEdge.None;
+        }
+
         public void Initialize(string data)
         {
             _data = data;
@@ -19,10 +24,9 @@ namespace Sample.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var button = new UILabel();
-            button.Text = _data;
-            button.Frame = new CGRect(10, 10, View.Bounds.Width, 40);
-
+            var label = new UILabel();
+            label.Text = _data;
+            label.Frame = new CGRect(10, 10, View.Bounds.Width, 40);
         }
     }
 
