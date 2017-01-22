@@ -1,7 +1,4 @@
 ﻿using CoreGraphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UIKit;
 
 namespace Sample.iOS

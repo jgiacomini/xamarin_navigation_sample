@@ -16,7 +16,7 @@ namespace Sample.iOS
 
             var buttonBack = UIButton.FromType(UIButtonType.System);
             buttonBack.SetTitle("Bouton retour", UIControlState.Normal);
-            buttonBack.Frame = new CGRect(0, 60, View.Bounds.Width, 40);
+            buttonBack.Frame = new CGRect(0, 0, View.Bounds.Width, 40);
             buttonBack.TouchUpInside += ButtonBack_TouchUpInside;
             this.View.AddSubview(buttonBack);
         }

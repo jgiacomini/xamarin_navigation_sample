@@ -89,6 +89,7 @@
     <Compile Include="TargetViewController.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModalViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SecondViewController.cs" />

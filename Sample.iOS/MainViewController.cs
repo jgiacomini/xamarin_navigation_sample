@@ -27,7 +27,14 @@ namespace Sample.iOS
             button2.Frame = new CGRect(10, 60, View.Bounds.Width, 40);
             button2.TouchUpInside += NavigationAvecDonnee;
 
-            View.AddSubviews(button1, button2);
+
+            var button3 = UIButton.FromType(UIButtonType.System);
+			button3.SetTitle("Navigation modale", UIControlState.Normal);
+			button3.Frame = new CGRect(10, 110, View.Bounds.Width, 40);
+			button3.TouchUpInside += NavigationModale;
+
+
+            View.AddSubviews(button1, button2,button3);
 
 
             // EXEMPLE DE CODE DE Sauvegarde d'état
@@ -39,11 +46,10 @@ namespace Sample.iOS
 
         private void Button_TouchUpInside(object sender, EventArgs e)
         {
-            //this.NavigationController.PushViewController(new SecondViewController(), true);
-            this.NavigationController.PresentViewController(new SecondViewController(), true, ViewPresented);
-            
+            this.NavigationController.PushViewController(new SecondViewController(), true);
+
         }
-        
+
         private void NavigationAvecDonnee(object sender, EventArgs e)
         {
             // Perform any additional setup after loading the view, typically from a nib.
@@ -54,6 +60,13 @@ namespace Sample.iOS
             // Navigation vers le contrôleur cible
             this.NavigationController.PushViewController(targetViewController, true);
         }
+
+
+        private void NavigationModale(object sender, EventArgs e)
+		{
+			this.NavigationController.PresentViewController(new ModalViewController(), true,null);
+
+		}
 
         #region Sauvegarde et Restauration d'état
         private int _nbTimeViewControllerDisplayed = 1;
