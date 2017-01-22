@@ -39,9 +39,11 @@ namespace Sample.iOS
 
         private void Button_TouchUpInside(object sender, EventArgs e)
         {
-            this.NavigationController.PushViewController(new SecondViewController(), true);
+            //this.NavigationController.PushViewController(new SecondViewController(), true);
+            this.NavigationController.PresentViewController(new SecondViewController(), true, ViewPresented);
+            
         }
-
+        
         private void NavigationAvecDonnee(object sender, EventArgs e)
         {
             // Perform any additional setup after loading the view, typically from a nib.
