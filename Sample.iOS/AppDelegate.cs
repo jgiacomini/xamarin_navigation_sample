@@ -25,6 +25,7 @@ namespace Sample.iOS
             return true;
         }
 
+        // Activation de la sauvegarde de l’état
         public override bool ShouldSaveApplicationState(UIApplication application, NSCoder coder)
         {
             return true;
