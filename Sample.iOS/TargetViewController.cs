@@ -13,7 +13,9 @@ namespace Sample.iOS
 
         public TargetViewController()
         {
+			this.View.BackgroundColor = UIColor.Orange;
             this.EdgesForExtendedLayout = UIRectEdge.None;
+		
         }
 
         public void Initialize(string data)
@@ -24,10 +26,29 @@ namespace Sample.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var label = new UILabel();
-            label.Text = _data;
-            label.Frame = new CGRect(10, 10, View.Bounds.Width, 40);
+			View.Add(Label);
         }
+
+		private UILabel _label;
+		public UILabel Label
+		{
+			get
+			{
+				if (_label == null)
+				{
+					_label = new UILabel();
+					_label.Frame = new CGRect(10, 10, View.Bounds.Width, 40);
+				}
+
+				return _label;
+			}
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			Label.Text = _data;
+		}
     }
 
 }
