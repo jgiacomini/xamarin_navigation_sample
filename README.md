@@ -2,5 +2,5 @@
 
 Un exemple de comment la navigation fonctionne par plateforme
 * [x]  iOS
-* [x]  Android
-* [x] UWP
+* [x]  Android (Maxime Frappat) 
+* [x]  UWP (Michaël Fery)
