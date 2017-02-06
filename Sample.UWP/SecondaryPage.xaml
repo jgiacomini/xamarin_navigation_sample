@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Sample.UWP.MainPage"
+    x:Class="Sample.UWP.SecondaryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Sample.UWP"
@@ -9,14 +9,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBox PlaceholderText="Texte en cache"/>
+            <TextBlock Text="Label"/>
+            <TextBox Text="Default Label"
+                     x:Name="txtLabel"/>
+            <TextBlock Text="Description"/>
+            <TextBox Text="Default Description"
+                     x:Name="txtDescription"/>
             <Button x:Name="btnNavigation"
                     Click="btnNavigation_Click">
-                Navigation vers SecondaryPage sans paramêtre
-            </Button>
-            <Button x:Name="btnNavigationWithParam"
-                    Click="btnNavigationWithParam_Click">
-                Navigation vers SecondaryPage avec paramêtre
+                Navigation vers MainPage sans paramêtre
             </Button>
         </StackPanel>
     </Grid>
