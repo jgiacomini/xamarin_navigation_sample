@@ -3,4 +3,4 @@
 Un exemple de comment la navigation fonctionne par plateforme
 * [x]  iOS
 * [x]  Android
-* [ ] UWP
+* [x] UWP
