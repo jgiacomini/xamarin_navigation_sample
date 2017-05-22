@@ -34,6 +34,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>Sample_Storyboard.iOS</string>
 </dict>
 </plist>
